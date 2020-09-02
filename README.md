@@ -15,13 +15,19 @@ Validation = val_data_hs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
 Easy data augmentation techniques for for hate speech classifcation.
 These are a set of data augmentation techniques that are easy to implement
 
 Synonym Replacement (SR): Randomly choose n words from the sentence that are not stop words. Replace each of these words with one of its synonyms chosen at random.
+
 Random Insertion (RI): Find a random synonym of a random word in the sentence that is not a stop word. Insert that synonym into a random position in the sentence. Do this n times.
+
 Random Swap (RS): Randomly choose two words in the sentence and swap their positions. Do this n times.
+
 Random Deletion (RD): For each word in the sentence, randomly remove it with probability p.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
