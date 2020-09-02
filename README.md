@@ -4,7 +4,7 @@ Final year project QMUL
 ## Easy data augmentation techniques for hate speech classifcation.
 #### These are a set of four different data augmentation techniques that are easy to implement. Listed as follows
 
-##### Synonym Replacement (SR): 
+##### Synonym Replacement (SR):
 Given a text data set, this operation goes through each sentence in the corpus, selecting a number of words “n” at random and replacing each selected word with one of its own random synonyms as well. In addition stop words like ‘a’ & ‘and’ etcetera are not selected as words.
 
 ##### Random Swap (RS):
@@ -78,3 +78,6 @@ SR_RS_RD, SR_RS_RI, SR_RI_RD, RI_RS_RD, SR_RS_RD_RI
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+### Please note each augmented train data has the term "train_hs" before its corresponding name
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
