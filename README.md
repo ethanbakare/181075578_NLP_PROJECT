@@ -6,7 +6,9 @@ The dataset folder contains:
 The test, train and validation data samples required to run the code
 
 Test = test_data_hs
+
 Train = train_data_hs
+
 Validation = val_data_hs
 
 
