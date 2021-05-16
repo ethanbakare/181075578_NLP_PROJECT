@@ -1,83 +1,61 @@
-# 181075578_NLP_PROJECT
-Final year project QMUL
+# Offensive Tweet Classification
 
-## Easy data augmentation techniques for hate speech classifcation.
-#### These are a set of four different data augmentation techniques that are easy to implement. Listed as follows
+Employing an annotated OLID dataset for offensive tweets, I used python and Keras a deep learning framework to build a deep learning model to complete two tasks -
 
-##### Synonym Replacement (SR):
-Given a text data set, this operation goes through each sentence in the corpus, selecting a number of words “n” at random and replacing each selected word with one of its own random synonyms as well. In addition stop words like ‘a’ & ‘and’ etcetera are not selected as words.
+* **Task 1:** Binary classification of tweets as Offensive and Not Offensive
+* **Task 2:** Multiclassifiaction for Subtasks A-C combined, treating this as one single multi-class problem. There are 5 possible classes: NOT, OFF-UNT, OFF-TIN-IND, OFF-TIN-GRP, OFF-TIN-OTH
 
-##### Random Swap (RS):
-It iterates through each sentence selecting two words randomly and swapping their positions, this is done n times.
+Dataset - OLID (https://sites.google.com/site/offensevalsharedtask/olid)
 
-##### Random Deletion (RD):
-It goes through each sentence in the corpus, with a probability “p” each word in the sentence is removed or not based  based on p
-
-##### Random Insertion (RI):
-Similarly to SR, this operation goes through each sentence in the corpus, selecting a number of words “n” at random and adding a synonym of each selected word at random positions in the sentence, again stop words like ‘a’ \& ‘and’ etcetera are not selected as words
-
-
-Please note:
-HS = Hate speech
-
-SR = Synonym Replacement
-
-RS = Random Swap
-
-RD = Random Deletion
-
-RI = Random Insertion
-
-DA = Data
-#### ///////////////////////////////////////////////////////////////////////////////
-
-# Running the code.
-
-To run the code make sure you have the following :
-
-Install NLTK :
-
-Download Wordnet
-
-After which proceed to 
-### Download the .ipynb file titled  000_DA_HS 
-Download the .ipynb file titled 000_DA_HS.ipynb
-
-
-### Download the dataset folder
-Download the dataset folder which contains the test, val, train, and train augmeneted files
-
-
-### Open the 000_DA_HS.ipynb 
-Open 000_DA_HS.ipynb proceed to the second block of code to change the address for the test, validation and (train data - choose smaple of choice) 
-The source test, validation and train data are titled:
-
-#### Test = test_data_hs
-
-#### Train = train_data_hs
-
-#### Validation = val_data_hs
-
-### Run the 000_DA_HS.ipynb code file
-Click run till you reach the code block for training and observe the results. To run a differnt dataset all you do id change the address for the train data on the second line in the code
+**Competition link - OffensEval 2019 (https://sites.google.com/site/offensevalsharedtask/offenseval2019)
 
 
 
-# Running code with Augmented datasets?
-There are 15 concatenated combinations made on on the four EDA techniques, with these techniques, as such we have 15 augmented training dataset. They are grouped by number of augmentations performed each seperated with a comma(,). They are listed as follows
-
-### Single Augmentation
-SR, RS, RD, RI
-
-### Double Augmentation
-SR_RS, SR_RD, SR_RI, RS_RD, RS_RI, RD_RI
-
-### Three or more Augmentation
-SR_RS_RD, SR_RS_RI, SR_RI_RD, RI_RS_RD, SR_RS_RD_RI
+## Task 1:
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The test data was split into 3 label files and 3 data files for 3 subtasks. The training data was contained in one file with all labels. I implemented the steps below to build the classifier and evaluate it on test data -
 
-### Please note each augmented train data has the term "train_hs" before its corresponding name
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Use pandas dataframe to read dataset and label files for training and test
+
+    -	Read the 3 subtask labels from training dataset file into 3 different lists
+
+    -	Start preprocessing the tweets for both training and test dataset -
+
+       Convert emojis to text, Tokenize using whitespace, 
+    
+       Remove punctuations, empty, strings, digits, stop words, and the words ‘user’,’url’ and ‘maga’
+
+    -	Created word to index and index to word dictionary out of all possible words in the training data
+
+    -	Converted words in every tweet to IDs that can me mapped back to words using the dictionaries above
+
+    -	Converted test dataset tweets to IDs using the same dictionary and assign a fixed ID to words that are not in the training dataset
+
+    -	Encode string labels to number
+
+    -	Padded each sentence in the pre-processed training and test dataset with zeros for a fixed length
+
+    -	Split training data to training and validation. 3000 samples for validation and rest for training
+
+    -	Fed prepared data into model and obtain training and validation loss and accuracies by training over a fixed number of epochs
+
+    -	Evaluated trained model on trained dataset
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+## Task 2:
+
+For building the multiclassifier for subtasks A-C which combined 5 specified classes the following steps implemented–
+se pandas dataframe to read dataset and label files for training and test
+
+    -	Concatenated the labels for both test and training datasets. 
+    
+    -	Each entry in the dataset will have one of the labels - NOT, OFF-UNT, OFF-TIN-IND, OFF-TIN-GRP, OFF-TIN-OTH,
+
+    -	Used the same pre-processed training and testing data
+
+    -	Created one hot vector representation for the label data
+
+    -	Changed the hyperparameters and model architecture to adapt to the multi class classification problems
