@@ -43,7 +43,7 @@ The test data was split into 3 label files and 3 data files for 3 subtasks. The 
 
     -	Evaluated trained model on trained dataset
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 
 ## Task 2:
 
